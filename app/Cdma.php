@@ -31,6 +31,13 @@ class Cdma extends Model
     public function status(){
         return $this->belongsTo('App\Status');
     }
+
+    public function setDepartmentNameAttribute($department_name){
+        $this->attributes['department_name']=strtoupper(trim($department_name));
+    }
+    public function setEmployeeNameAttribute($employee_name){
+        $this->attributes['employee_name']=strtoupper(trim($employee_name));
+    }
 /*$table->string('employee_number')->unique();
 $table->string('employee_name');
 $table->integer('company_id')->unsigned();
