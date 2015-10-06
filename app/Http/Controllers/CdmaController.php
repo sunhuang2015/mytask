@@ -2,41 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
-use App\MobileFees;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-class MobilefeeController extends Controller
+use App\Cdma;
+class CdmaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-           
+        $cdmas=Cdma::with(['company','status'])->get();
 
-                if($request->has('months')){
-                      $months=$request['months'];
-                      session(["months"=>$months]);  
-                }else{
-                    if($request->session()->has('months')){
-                        $months=$request->session()->get('months');
-                    }else
-                    {
-                        $months="2015-07-01";
-                    }
-                }
-                
-
-          //dd(session('months')); 
-        $mobilefees=MobileFees::with(['employee','company'])->whereMonths($months)->get();
-     
-       return view('mobilefee.index')->with('mobilefees',$mobilefees);
+        return view('cdmas.index')->with('cdmas',$cdmas);
     }
 
     /**
@@ -55,9 +37,13 @@ class MobilefeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\CdmaRequest $request)
     {
         //
+        $data=$request->except(['_token']);
+       // dd($data);
+       Cdma::create($data);
+        return back();
     }
 
     /**
@@ -80,6 +66,9 @@ class MobilefeeController extends Controller
     public function edit($id)
     {
         //
+        $cdma=Cdma::find($id);
+        return view('cdmas.edit')->with('cdma',$cdma);
+
     }
 
     /**
@@ -93,22 +82,9 @@ class MobilefeeController extends Controller
     {
         //
         $data=$request->except(['_token','_method']);
-        $mobilefee=MobileFees::find($id);
-        $credit=$mobilefee->employee->level->credit;
-        if($data['fee']<=$credit){
-            $mobilefee->update($data);
-            return back();
-        }else{
-            return back()->with('message','超出 '.$credit.'  额度 ');
-        }
-
-
-
-       /* $data=$request->except(['_token','_method']);
-        $employee=Employee::find($id);
-        $employee->update($data);
-        return redirect()->to('employees');*/
-
+        $cdma=Cdma::find($id);
+        $cdma->update($data);
+        return redirect()->to('cdmas');
     }
 
     /**

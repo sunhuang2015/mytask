@@ -48,7 +48,7 @@ class BatchMobileFees extends Command
         $table->decimal('fee',8,2);
         $table->boolean('isSubmited')->default(false);*/
 //        $employees=Employee::where('expired_date','<=',Carbon::now())->get();
-      $employees=Employee::all();
+      $employees=Employee::where('category_id',2)->get();
 
         $rules=[
             'employee_id'=>'required|unique_with:mobile_fees,months'

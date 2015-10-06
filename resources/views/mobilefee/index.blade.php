@@ -13,6 +13,10 @@
 
     <div class="row">
         <div class="col-xs-12">
+            {!! Form::open(array('route'=>'mobilefees.index')) !!}
+                {!! Form::select('months',App\MobileFees::distinct(['months'])->get(['months'])->lists('months','months'))!!}
+                {!!Form::submit()!!}
+            {!! Form::close()!!}
             <table class="display table table-striped table-bordered compact " cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>

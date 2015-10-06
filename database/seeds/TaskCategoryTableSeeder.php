@@ -16,6 +16,7 @@ class TaskCategoryTableSeeder extends Seeder
         \DB::table('task_categories')->insert([
             ['name'=>'工程'],
             ['name'=>'设备'],
+            ['name'=>'CDMA'],
 
         ]);
     }

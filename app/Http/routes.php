@@ -30,9 +30,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-
+  
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('taskstep','TaskstepController');
+  
+Route::resource('taskstep','TaskstepController');
     Route::resource('tasks','TaskController');
     Route::resource('tasklogs','TasklogController');
 
@@ -48,9 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('/delete/employee/{id}','DeleteController@employee');
     route::get('/delete/phone/{id}','DeleteController@phone');
     route::get('/delete/department/{id}','DeleteController@department');
-    route::get('/mobilefees/{months?}','MobilefeeController@index');
+    route::post('/mobilefees/{months?}','MobilefeeController@index');
     route::resource('mobilefees','MobilefeeController');
-
     route::resource('departments','DepartmentController');
-
+    route::resource('cdmas','CdmaController');
 });
