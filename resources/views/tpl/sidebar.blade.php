@@ -70,21 +70,28 @@
                         <li class="">
                             <a href="/tasks">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                采购项目
+                                任务
                             </a>
 
                             <b class="arrow"></b>
                         </li>
 
                         <li class="">
-                            <a href="/employee">
+                            <a href="/employees">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                导出
+                                员工
                             </a>
 
                             <b class="arrow"></b>
                         </li>
+                        <li class="">
+                            <a href="/cdmas">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                CDMA
+                            </a>
 
+                            <b class="arrow"></b>
+                        </li>
 
                     </ul>
 
