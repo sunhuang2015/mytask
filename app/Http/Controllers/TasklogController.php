@@ -109,4 +109,10 @@ class TasklogController extends Controller
     {
         //
     }
+
+    public function timeline($id){
+        $tasklogs=TaskLog::with('step','task')->where('task_id',$id)->get();
+        $task=Task::find($id);
+        return view('task.timeline')->with('tasklogs',$tasklogs)->with('task',$task);
+    }
 }

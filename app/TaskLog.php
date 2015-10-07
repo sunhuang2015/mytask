@@ -12,4 +12,7 @@ class TaskLog extends Model
     public function task(){
         return $this->belongsTo('App\Task');
     }
+    public function step(){
+        return $this->belongsTo('App\TaskStep');
+    }
 }

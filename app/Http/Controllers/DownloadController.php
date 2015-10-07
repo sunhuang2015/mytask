@@ -90,4 +90,8 @@ class DownloadController extends Controller
         $path=TaskLog::find($id)->value('attachment');
         return response()->download($path);
     }
+    public function tasklog($id){
+        $path=TaskLog::find($id)->value('attachment');
+        return response()->download($path);
+    }
 }

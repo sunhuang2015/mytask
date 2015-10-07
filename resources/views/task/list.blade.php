@@ -159,11 +159,13 @@
             <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>
-                    <th class="hidden-320">Name</th>
-                    <th>Applicant</th>
-                    <th>Status</th>
-                    <th>Company</th>
-                    <th>Cost</th>
+                    <th class="hidden-320">项目名称</th>
+
+                    <th>申请人</th>
+                    <th>状态</th>
+                    <th>公司</th>
+                    <th>成本中心</th>
+                    <th>细节</th>
                 </tr>
 
                 </thead>
@@ -175,7 +177,7 @@
                             <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa fa-edit "></i></a></td>
                             <td>{{ $task->company->name }}</td>
                             <td>{{ $task->costcenter }}</td>
-                            <td></td>
+                            <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

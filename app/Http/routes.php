@@ -36,8 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::resource('taskstep','TaskstepController');
     Route::resource('tasks','TaskController');
     Route::resource('tasklogs','TasklogController');
+    Route::get('tasklogs/timelime/{id}','TaskLogController@timeline');
 
     Route::get('download/task/{id}','DownloadController@task');
+    Route::get('download/tasklog/{id}','DownloadController@tasklog');
 
     Route::get('upload/employee/','UploadController@employee');
     Route::post('upload/employee/','UploadController@employeeUpload');

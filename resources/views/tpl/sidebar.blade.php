@@ -92,6 +92,14 @@
 
                             <b class="arrow"></b>
                         </li>
+                        <li class="">
+                            <a href="/upload/employee">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                上传部门和人员数据
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
 
                     </ul>
 
