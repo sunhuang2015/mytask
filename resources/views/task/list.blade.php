@@ -162,10 +162,14 @@
                     <th class="hidden-320">项目名称</th>
 
                     <th>申请人</th>
-                    <th>状态</th>
-                    <th>公司</th>
+                    
+		   <th>Phone</phone>	
+                    <th>Subject</th>
+		    <th>公司</th>
                     <th>成本中心</th>
-                    <th>细节</th>
+                    <th>Reason</th>
+                    <th>Status</td>
+		<th>细节</th>
                 </tr>
 
                 </thead>
@@ -174,10 +178,13 @@
                         <tr>
                             <td>{{ $task->name  }}</td>
                             <td>{{ $task->applicant }}</td>
-                            <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa fa-edit "></i></a></td>
-                            <td>{{ $task->company->name }}</td>
+                            <td>{!! $task->phone !!}</td> 
+                            <td>{!! $task->subject !!}</td>
+			    <td>{{ $task->company->name }}</td>
                             <td>{{ $task->costcenter }}</td>
-                            <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile"></i></a></td>
+			   <td>{!! $task->reason !!}</td>
+                      	 <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa fa-edit "></i></a></td>
+			      <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

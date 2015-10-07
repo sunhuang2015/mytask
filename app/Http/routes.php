@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     if(Auth::check()){
-        return view('/employees');
+        return redirect()->to('employees');
     }
     return view('auth.login');
 
@@ -33,10 +33,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
   
 Route::group(['middleware' => 'auth'], function () {
   
-Route::resource('taskstep','TaskstepController');
+    Route::resource('taskstep','TaskstepController');
     Route::resource('tasks','TaskController');
     Route::resource('tasklogs','TasklogController');
-    Route::get('tasklogs/timelime/{id}','TaskLogController@timeline');
+    Route::get('tasklogs/timelime/{id}','TasklogController@timeline');
 
     Route::get('download/task/{id}','DownloadController@task');
     Route::get('download/tasklog/{id}','DownloadController@tasklog');
