@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Company;
 
 Route::get('/', function () {
     if(Auth::check()){
@@ -55,4 +56,31 @@ Route::group(['middleware' => 'auth'], function () {
     route::resource('mobilefees','MobilefeeController');
     route::resource('departments','DepartmentController');
     route::resource('cdmas','CdmaController');
+    Route::get('report/{months}',function($months){
+
+
+        Excel::create('MultekMobile', function($excel) use($months) {
+
+            $companies=Company::all();
+
+            foreach($companies as $company){
+
+                $excel->sheet('new Sheet', function($sheet) use($company,$months){
+                    $sheet->setAllBorders('thin');
+
+                    // Set border for cells
+                    $sheet->setBorder('A1', 'thin');
+
+                    $mobilefees=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->get();
+                    $sheet->loadView('report.index')->with('mobilefees',$mobilefees)->with('company_name',$company->name);
+
+                });
+            }
+
+
+
+        })->download('xls');
+    });
 });
+
+

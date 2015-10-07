@@ -100,7 +100,14 @@
 
                             <b class="arrow"></b>
                         </li>
+                        <li class="">
+                            <a href="mobilefees">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                报销
+                            </a>
 
+                            <b class="arrow"></b>
+                        </li>
                     </ul>
 
                 </li>

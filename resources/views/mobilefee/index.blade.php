@@ -17,6 +17,13 @@
                 {!! Form::select('months',App\MobileFees::distinct(['months'])->get(['months'])->lists('months','months'))!!}
                 {!!Form::submit()!!}
             {!! Form::close()!!}
+
+            <?php
+                $months=App\MobileFees::distinct(['months'])->get(['months']);
+                    ?>
+            @foreach($months as $month)
+                <a href="/report/{!! $month->months !!}">{!! $month->months !!}</a>
+            @endforeach
             <table class="display table table-striped table-bordered compact " cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>
@@ -48,7 +55,7 @@
                                     'method'=>'put'
                                     ]
                                     ) !!}
-                                {!! Form::text('fee',$mobilefee->fee,['class'=>'form-control input-sm']) !!}
+                                {!! Form::text('fee',$mobilefee->fee,['class'=>'form-control input-sm','precision'=>"2"]) !!}
                                 {!! Form::submit() !!}
                                 {!! Form::close() !!}
                                 @if (session()->has('message'))
