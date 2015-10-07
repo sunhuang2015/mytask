@@ -87,11 +87,11 @@ class DownloadController extends Controller
 
 
     public function task($id){
-        $path=TaskLog::find($id)->value('attachment');
+        $path=TaskLog::find($id)->attachment;
         return response()->download($path);
     }
     public function tasklog($id){
-        $path=TaskLog::find($id)->value('attachment');
+        $path=TaskLog::find($id)->attachment;
         return response()->download($path);
     }
 }
