@@ -36,4 +36,8 @@ class Employee extends Model
         return $this->belongsTo('App\EmployeeCategory');
     }
 
+    public function mobilefee(){
+        return $this->hasMany('App\MobileFees');
+    }
+
 }

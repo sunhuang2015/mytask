@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
     route::resource('mobilefees','MobilefeeController');
     route::resource('departments','DepartmentController');
     route::resource('cdmas','CdmaController');
+    route::resource('devices','DeviceController');
+    route::resource('taskforms','TaskFormController');
+    route::get('/reporting/task/excel/{id}',"ReportController@taskexcel");
     Route::get('report/{months}',function($months){
 
 

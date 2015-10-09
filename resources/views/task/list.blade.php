@@ -163,13 +163,14 @@
 
                     <th>申请人</th>
                     
-		   <th>Phone</phone>	
+		             <th>Phone</phone>
                     <th>Subject</th>
-		    <th>公司</th>
+		            <th>公司</th>
                     <th>成本中心</th>
                     <th>Reason</th>
                     <th>Status</td>
-		<th>细节</th>
+		            <th>细节</th>
+                    <th>采购清单</th>
                 </tr>
 
                 </thead>
@@ -185,6 +186,7 @@
 			   <td>{!! $task->reason !!}</td>
                       	 <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa fa-edit "></i></a></td>
 			      <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile"></i></a></td>
+                            <td><a href="/taskforms/{!! $task->id !!}"><i class="ace-icon fa fa-pencil"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>
