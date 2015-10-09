@@ -115,6 +115,131 @@
 
 
             </ul>
+
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> 设置 </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        采购相关
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu nav-hide" style="display: none;">
+                        <li class="">
+                            <a href="/devices">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                设备配置
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/employees">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                员工
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/cdmas">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                CDMA
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/upload/employee">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                上传部门和人员数据
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="mobilefees">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                报销
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="open">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        报表跟踪
+
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+                    <ul class="submenu nav-hide" style="display: none;">
+                        <li class="">
+                            <a href="/tasks">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                任务
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="/employees">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                员工
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/cdmas">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                CDMA
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="/upload/employee">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                上传部门和人员数据
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="mobilefees">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                报销
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+
+                </li>
+
+            </ul>
+
         </li>
     </ul><!-- /.nav-list -->
 
