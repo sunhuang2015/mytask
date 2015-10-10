@@ -106,19 +106,11 @@
                                 </div><!-- /.widget-main -->
 
                                 <div class="toolbar clearfix">
-                                    <div>
-                                        <a href="#" data-target="#forgot-box" class="forgot-password-link">
-                                            <i class="ace-icon fa fa-arrow-left"></i>
-                                            忘记密码
-                                        </a>
-                                    </div>
-
-                                    <div>
-                                        <a href="#" data-target="#signup-box" class="user-signup-link">
-                                            登记
-                                            <i class="ace-icon fa fa-arrow-right"></i>
-                                        </a>
-                                    </div>
+                                                                  
+                                          
+                                        
+                                        
+                                    
                                 </div>
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
@@ -176,8 +168,7 @@
                                     <p> 详细内容: </p>
 
                                     <form method="POST" action="/auth/register">
-                                        {!! csrf_field() !!}
-                                        <fieldset>
+                                                                          <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="email" name="email" class="form-control" placeholder="Email" value="{!! old('email') !!}" />
