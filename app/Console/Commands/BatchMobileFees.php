@@ -56,7 +56,7 @@ class BatchMobileFees extends Command
         foreach($employees as $employee){
                 $data['employee_id']=$employee->id;
                 $data['company_id']=$employee->company_id;
-                $data['months']='2015-07-01';
+                $data['months']='2015-08-01';
                 $data['fee']=0;
                // $data['isSubmited']=false;
                 $data['employee_number']=$employee->number;

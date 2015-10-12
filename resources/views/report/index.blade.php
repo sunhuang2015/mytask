@@ -16,10 +16,11 @@
                 <th>姓名</th>
                 <th>公司</th>
                 <th>部门</th>
+		<th>电话号码</th>
                 <th>成本中心</th>
                 <th>月份</th>
-                <th>报销额度</th>
-                <th>费用</th>
+                <th>津贴标准</th>
+                <th>实际报销额度</th>
                 <th>银行账号</th>
                 <th>银行</th>
 
@@ -33,7 +34,7 @@
                     <td>{!! $mobilefee->employee->name !!}</td>
                     <td>{!! $mobilefee->company->name !!}</td>
                     <td>{!! $mobilefee->employee->department_name !!}</td>
-
+		   <td>{!! $mobilefee->employee->phone_number !!}</td>
                     <td>{!! $mobilefee->employee->costcenter !!}</td>
                     <td>{!! $mobilefee->months !!}</td>
                     <td>{!! \App\Employee::find($mobilefee->employee_id)->level->credit !!}</td>
