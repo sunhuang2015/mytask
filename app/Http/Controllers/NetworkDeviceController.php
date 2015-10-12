@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\Employee;
+use App\NetworkDevice;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Phone;
-use App\Rack;
-use App\Cdma;
 
-class DeleteController extends Controller
+class NetworkDeviceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,6 +17,8 @@ class DeleteController extends Controller
     public function index()
     {
         //
+        $devices=NetworkDevice::with(['company','rack','model','status'])->get();
+        return view('networkdevice.index')->with('devices',$devices);
     }
 
     /**
@@ -39,9 +37,12 @@ class DeleteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\NetworkDeviceRequest $request)
     {
         //
+        $data=$request->except('_token');
+        NetworkDevice::create($data);
+        return back();
     }
 
     /**
@@ -64,6 +65,8 @@ class DeleteController extends Controller
     public function edit($id)
     {
         //
+        $device=NetworkDevice::find($id);
+        return view('networkdevice.edit')->with('device',$device);
     }
 
     /**
@@ -76,6 +79,10 @@ class DeleteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data=$request->except(['_token','_method']);
+        $device=NetworkDevice::find($id);
+        $device->update($data);
+        return redirect()->to('networkdevices');
     }
 
     /**
@@ -87,27 +94,5 @@ class DeleteController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function employee($id){
-        Employee::find($id)->delete();
-        return back();
-    }
-    public function phone($id){
-        Phone::find($id)->delete();
-        return back();
-    }
-
-    public function department($id){
-        Department::find($id)->delete();
-        return back();
-    }
-    public function rack($id){
-        Rack::find($id)->delete();
-        return back();
-    }
-    public function cdma($id){
-        Cdma::find($id)->delete();
-        return back();
     }
 }

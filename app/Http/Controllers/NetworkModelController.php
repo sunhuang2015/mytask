@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\Employee;
+use App\NetworkModel;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Phone;
-use App\Rack;
-use App\Cdma;
 
-class DeleteController extends Controller
+class NetworkModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,6 +17,8 @@ class DeleteController extends Controller
     public function index()
     {
         //
+        $networkmodels=NetworkModel::all();
+        return view('networkmodel.index')->with('networkmodels',$networkmodels);
     }
 
     /**
@@ -39,9 +37,12 @@ class DeleteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\NetworkModelRequest $request)
     {
         //
+        $data=$request->except('_token');
+        NetworkModel::create($data);
+        return back();
     }
 
     /**
@@ -87,27 +88,5 @@ class DeleteController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function employee($id){
-        Employee::find($id)->delete();
-        return back();
-    }
-    public function phone($id){
-        Phone::find($id)->delete();
-        return back();
-    }
-
-    public function department($id){
-        Department::find($id)->delete();
-        return back();
-    }
-    public function rack($id){
-        Rack::find($id)->delete();
-        return back();
-    }
-    public function cdma($id){
-        Cdma::find($id)->delete();
-        return back();
     }
 }

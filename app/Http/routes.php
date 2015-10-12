@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('upload/employee/','UploadController@employee');
     Route::post('upload/employee/','UploadController@employeeUpload');
+    Route::post('upload/cdma','UploadController@cdmaUpload');
     Route::get('upload/phone/','UploadController@phone');
 
     Route::resource('employees','EmployeeController');
@@ -52,6 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('/delete/employee/{id}','DeleteController@employee');
     route::get('/delete/phone/{id}','DeleteController@phone');
     route::get('/delete/department/{id}','DeleteController@department');
+    Route::get('/delete/rack/{id}','DeleteController@rack');
+    Route::get('/delete/cdma/{id}','DeleteController@cdma');
     route::post('/mobilefees/{months?}','MobilefeeController@index');
     route::resource('mobilefees','MobilefeeController');
     route::resource('departments','DepartmentController');
@@ -84,6 +87,10 @@ Route::group(['middleware' => 'auth'], function () {
 
         })->download('xls');
     });
+
+    Route::resource('racks','RackController');
+    Route::resource('networkmodels','NetworkModelController');
+    Route::resource('networkdevices','NetworkDeviceController');
 });
 
 

@@ -12,6 +12,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Company;
 use App\Department;
 use App\Employee;
+use App\CDma;
+
 class UploadController extends Controller
 {
     /**
@@ -232,5 +234,64 @@ class UploadController extends Controller
 
             //END
         });
+    }
+
+
+    public function cdmaUpload(Request $request){
+        // Check Upload File
+        if($request->hasFile('cdmafile')){
+            $date=Carbon::now()->format("Y_m_d");
+            $path=base_path()."/up/"."CDMA/".$date."/";
+            $ext=$request->file('cdmafile')->getClientOriginalExtension();
+            $extmine=$request->file('cdmafile')->getClientMimeType();
+            $exts=collect([
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+
+            ]);
+            if($exts->contains($extmine)){
+                $request->file('cdmafile')->move($path,Carbon::now()->timestamp.".".$ext);
+                $filename=$path.Carbon::now()->timestamp.".".$ext;
+                $this->importCDMA($filename);
+            }else{
+                return back()->with('message','文件格式不对');
+            }
+
+
+        }
+        return back();
+
+    }
+
+
+    public function importCDMA($filename){
+        Excel::load($filename,function($reader){
+            $rule=[
+               'phone_number'=>'unique:cdmas',
+                'employee_number'=>'required|unique:cdmas',
+            ];
+            $sheetsCount=$reader->getSheetCount();
+            for($i=0;$i<$sheetsCount;$i++){
+                $sheets=$reader->getSheet($i)->toArray();
+                $company_name=$reader->getSheet($i)->getTitle();
+                $data['company_id']=Company::where('name',$company_name)->value('id');
+                $sheetCount=count($sheets);
+                for($j=1;$j<$sheetCount;$j++){
+                    $data['department_name']=trim($sheets[$j][2]);
+                    $data['employee_name']=trim($sheets[$j][3]);
+                    $data['employee_number']=trim($sheets[$j][4]);
+                    $data['phone_number']=trim($sheets[$j][5]);
+                    $data['status_id']=1;
+                    $validator=\Validator::make($data,$rule);
+                    if($validator->fails()){
+
+                    }else{
+                        CDMA::create($data);
+                    }
+                }
+
+            }
+        });
+
     }
 }

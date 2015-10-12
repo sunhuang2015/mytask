@@ -148,25 +148,25 @@
                         </li>
 
                         <li class="">
-                            <a href="/employees">
+                            <a href="/racks">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                员工
+                                机柜设置
                             </a>
 
                             <b class="arrow"></b>
                         </li>
                         <li class="">
-                            <a href="/cdmas">
+                            <a href="/networkmodels">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                CDMA
+                                网络设备型号配置
                             </a>
 
                             <b class="arrow"></b>
                         </li>
                         <li class="">
-                            <a href="/upload/employee">
+                            <a href="/networkdevices">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                上传部门和人员数据
+                               网络设备
                             </a>
 
                             <b class="arrow"></b>
