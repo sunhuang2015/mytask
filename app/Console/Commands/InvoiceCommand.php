@@ -4,17 +4,16 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use App\Employee;
-use App\MobileFees;
 use App\Invoice;
-class BatchMobileFees extends Command
+use App\Employee;
+class InvoiceCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'batch:mobilefees';
+    protected $signature = 'batch:invoice';
 
     /**
      * The console command description.
@@ -42,28 +41,28 @@ class BatchMobileFees extends Command
     {
         echo "Started...";
 
-      $employees=Employee::where('category_id',2)->get();
+        $employees=Employee::where('category_id',2)->get();
 
         $rules=[
-            'employee_id'=>'required|unique_with:mobile_fees,months'
+            'employee_id'=>'required|unique_with:invoices,months'
         ];
         foreach($employees as $employee){
-                $data['employee_id']=$employee->id;
-                $data['company_id']=$employee->company_id;
+            $data['employee_id']=$employee->id;
+            $data['company_id']=$employee->company_id;
             $data['months']= Carbon::now()->firstOfMonth();
 
-                $data['fee']=0;
+            $data['fee']=0;
 
-                $data['employee_number']=$employee->number;
+            $data['employee_number']=$employee->number;
 
-                $validator=\Validator::make($data,$rules);
+            $validator=\Validator::make($data,$rules);
 
-                if($validator->fails()){
+            if($validator->fails()){
 
-                }else{
-                    MobileFees::create($data);
-                  //Invoice::create($data);
-                }
+            }else{
+                //MobileFees::create($data);
+                Invoice::create($data);
+            }
 
 
         }

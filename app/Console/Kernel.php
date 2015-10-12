@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\BatchMobileFees::class,
+        \App\Console\Commands\InvoiceCommand::class,
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
-        $schedule->command('batch:mobilefees')->weekly();
+        $schedule->command('batch:mobilefees')->hourly();
+        $schedule->command('batch:invoice')->hourly();
     }
 }

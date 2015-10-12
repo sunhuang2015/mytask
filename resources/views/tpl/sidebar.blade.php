@@ -49,7 +49,7 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> 项目 </span>
+                <span class="menu-text"> 项目</span>
 
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -60,7 +60,7 @@
                 <li class="open">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-caret-right"></i>
-                                报表跟踪
+                              日常工作
 
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
@@ -120,7 +120,7 @@
         <li>
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-cloud"></i>
-                <span class="menu-text"> 设置 </span>
+                <span class="menu-text"> 网络 </span>
 
                 <b class="arrow fa fa-angle-down"></b>
             </a>
