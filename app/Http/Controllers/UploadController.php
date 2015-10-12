@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Company;
 use App\Department;
 use App\Employee;
-use App\CDma;
+use App\Cdma;
 
 class UploadController extends Controller
 {
