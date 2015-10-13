@@ -2,7 +2,8 @@
 @section('content')
     <div class="page-header">
         <h1>
-            月账单
+            月账单 <small><span class="purple">[{!! $month !!}] <i class="ace-icon fa fa-money"></i> {!! $sum !!}</span></small>
+
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                 运营商 &amp;   <button type="button" class="btn  btn-purple btn-xs  " data-toggle="modal" data-target="#uploadModel">

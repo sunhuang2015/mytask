@@ -35,7 +35,9 @@ class BillListController extends Controller
 
 
         $bills=BillList::with('company')->whereMonths($months)->get();
-        return view('bills.index')->with('bills',$bills);
+
+        $sum=BillList::with('company')->whereMonths($months)->sum('fee');
+        return view('bills.index')->with('bills',$bills)->with('sum',$sum)->with('month',$months);
     }
 
     /**
