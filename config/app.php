@@ -152,6 +152,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
 //        Clockwork\Support\Laravel\ClockworkServiceProvider::class,
         Laracasts\Generators\GeneratorsServiceProvider::class,
+        yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 
@@ -208,6 +209,7 @@ return [
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 //        'Clockwork' => Clockwork\Support\Laravel\Facade::class,
+        'Datatables' => yajra\Datatables\Datatables::class,
 
     ],
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BillList;
 use App\EmployeeCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -294,4 +295,69 @@ class UploadController extends Controller
         });
 
     }
+
+
+//上传月账单
+    public function billUpload(Request $request){
+        if($request->hasFile('billfile')){
+            $company_id=$request->get('company_id');
+            $date=Carbon::now()->format("Y_m_d");
+            $path=base_path()."/up/"."BILL/".$date."/";
+            $ext=$request->file('billfile')->getClientOriginalExtension();
+            $extmine=$request->file('billfile')->getClientMimeType();
+            $exts=collect([
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ]);
+            if($exts->contains($extmine)){
+                $request->file('billfile')->move($path,Carbon::now()->timestamp.".".$ext);
+                $filename=$path.Carbon::now()->timestamp.".".$ext;
+                //$this->importBill($filename);
+
+                /* Import Excel file*/
+                Excel::load($filename,function($reader) use ($company_id) {
+
+                    $rule=[
+                        'phone'=>'required|unique_with:bill_lists,months'
+                    ];
+                    $sheetsCount=$reader->getSheetCount();
+                    for($i=0;$i<$sheetsCount;$i++){
+                        $sheets=$reader->getSheet($i)->toArray();
+
+
+                        $sheetCount=count($sheets);
+                        for($j=1;$j<$sheetCount;$j++){
+                            $data['supplier']=trim($sheets[$j][3]);
+                            if($data['supplier']==='电信'){
+                                $data['phone']=$sheets[$j][0];
+                                $data['fee']=$sheets[$j][2];
+                                $data['company_id']=$company_id;
+                                $data['name']=$sheets[$j][11];
+                                $data['months']=explode(':',$sheets[$j][4])[0];
+
+                            }
+
+
+                            $validator=\Validator::make($data,$rule);
+                            if($validator->fails()){
+
+                            }else{
+                                BillList::create($data);
+                            }
+                        }
+
+                    }
+                });
+
+
+            }else{
+                return back()->with('message','文件格式不对');
+            }
+
+        }
+        return back();
+    }
+
+
+
 }

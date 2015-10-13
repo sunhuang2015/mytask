@@ -101,6 +101,14 @@
                             <b class="arrow"></b>
                         </li>
                         <li class="">
+                            <a href="/bills">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                运营商月账单
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
                             <a href="mobilefees">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 报销

@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload/employee/','UploadController@employeeUpload');
     Route::post('upload/cdma','UploadController@cdmaUpload');
     Route::get('upload/phone/','UploadController@phone');
-
+    Route::post('upload/bill','UploadController@billUpload');
     Route::resource('employees','EmployeeController');
     Route::resource('phones','PhoneController');
 
@@ -56,12 +56,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/delete/rack/{id}','DeleteController@rack');
     Route::get('/delete/cdma/{id}','DeleteController@cdma');
     route::post('/mobilefees/{months?}','MobilefeeController@index');
+    route::post('/bills/{months?}','BillListController@index');
     route::resource('mobilefees','MobilefeeController');
     route::resource('departments','DepartmentController');
     route::resource('cdmas','CdmaController');
     route::resource('devices','DeviceController');
     route::resource('taskforms','TaskFormController');
     route::get('/reporting/task/excel/{id}',"ReportController@taskexcel");
+    Route::resource('bills','BillListController');
     Route::get('report/{months}',function($months){
 
 
