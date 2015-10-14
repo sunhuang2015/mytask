@@ -14,10 +14,22 @@ class LayoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $racks=Rack::with(['company','networkDevice'])->get();
+
+        if($request->has('company_id')){
+            $company_id=$request['company_id'];
+            session(["layout_company_id"=>$company_id]);
+        }else{
+            if($request->session()->has('layout_company_id')){
+                $company_id=$request->session()->get('layout_company_id');
+            }else
+            {
+                $company_id=1;
+            }
+        }
+        $racks=Rack::with(['company','networkDevice'])->where('company_id',$company_id)->get();
         return view('racklayouts.index')->with('racks',$racks);
     }
 

@@ -34,6 +34,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
   
 Route::group(['middleware' => 'auth'], function () {
     Route::get('layouts','LayoutController@index');
+    Route::post('layouts','LayoutController@index');
     Route::resource('taskstep','TaskstepController');
     Route::resource('tasks','TaskController');
     Route::resource('tasklogs','TasklogController');
