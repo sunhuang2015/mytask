@@ -5,7 +5,11 @@
             Step
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-               网络机柜 {!! Form::open(['layouts']) !!}
+               网络机柜
+                        {!! Form::open(['url'=>'layouts']) !!}
+                        {!! Form::select('company_id',\App\Company::lists('name','id')) !!}
+                       {!! Form::submit() !!}
+                        {!! Form::close() !!}
             </small>
         </h1>
     </div>
@@ -14,7 +18,7 @@
     <div class="row">
         <div class="col-xs-12">
             @foreach($racks as $rack)
-                     <div class="col-xs-6 col-sm-3 pricing-box">
+                     <div class="col-xs-6 col-sm-4 pricing-box">
                 <div class="widget-box widget-color-orange">
                     <div class="widget-header">
                         <h5 class="widget-title bigger lighter">机柜编号{!! $rack->name !!}</h5>
@@ -29,9 +33,10 @@
                                             @foreach($rack->networkDevice->all() as $device)
                                                 @if($i==($device->location))
                                                     <span>   {!! $i !!}
-                                                        <a href="http://10.201.33.112/cisco/switches/{!! $device->ip !!}.html" >
-                                                        <img src="/image/network/Cisco3750V2.PNG" width=210 heigh=25 align="right" alt="{!! $device->ip !!}">
-                                                        </a>
+
+                                                        <img src="/image/network/{!! $device->model->name !!}.PNG" width=110 heigh=15 align="right" alt="{!! $device->ip !!}">
+
+                                                        - <a href="http://10.201.33.112/cisco/switches/{!! $device->ip !!}.html" >{!! $device->ip !!}   </a>
                                                     </span>
                                                 @else
 

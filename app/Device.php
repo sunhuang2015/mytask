@@ -23,4 +23,8 @@ $table->string('spec');*/
         'spec',
         'unit'
     ];
+
+    public function model(){
+        return $this->belongsTo('App\NetworkModel');
+    }
 }

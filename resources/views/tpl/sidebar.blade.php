@@ -180,9 +180,9 @@
                             <b class="arrow"></b>
                         </li>
                         <li class="">
-                            <a href="mobilefees">
+                            <a href="layouts">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                报销
+                                机柜图
                             </a>
 
                             <b class="arrow"></b>
