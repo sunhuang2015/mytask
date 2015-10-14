@@ -17,6 +17,8 @@ class Phone extends Model
         'payment_company_id',
         'department_name',
         'category_id',
+        'employee_number',
+        'employee_name'
 
     ];
 

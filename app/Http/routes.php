@@ -33,7 +33,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
   
 Route::group(['middleware' => 'auth'], function () {
-  
+    Route::get('layouts','LayoutController@index');
     Route::resource('taskstep','TaskstepController');
     Route::resource('tasks','TaskController');
     Route::resource('tasklogs','TasklogController');
@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
     route::resource('taskforms','TaskFormController');
     route::get('/reporting/task/excel/{id}',"ReportController@taskexcel");
     Route::resource('bills','BillListController');
+
     Route::get('report/{months}',function($months){
 
 

@@ -57,12 +57,6 @@
                                         <div class="col-xs-4">
                                             {!! Form::select('company_id',\App\Company::lists('name','id'),null,['class'=>'form-control input-sm']) !!}
                                         </div>
-
-
-
-
-
-
                                     </div>
                                     <div class="form-group">
 
@@ -137,12 +131,14 @@
                 <tbody>
                         @foreach($bills as $bill)
                             <tr>
-                                <td>{!! $bill->phone !!}</td>
+                                <td>{!! $bill->phone !!}
+
+                                </td>
                                 <td>{!! $bill->name !!}</td>
                                 <td>{!! $bill->company->name !!}</td>
                                 <td>{!! $bill->months !!}</td>
                                 <td>{!! $bill->fee !!}</td>
-                                <td>{!! $bill->remark !!}</td>
+                                <td><a href="/cdmas/modify/{!! $bill->id !!}"><i class="ace-icon fa fa-edit ">添加</i></a></td>
                             </tr>
                         @endforeach
                 </tbody>

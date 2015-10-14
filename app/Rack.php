@@ -21,5 +21,11 @@ class Rack extends Model
     public function company(){
         return $this->belongsTo('App\Company');
     }
+
+    public function networkDevice(){
+        return $this->hasMany('App\NetworkDevice');
+    }
+
+
     protected  $dates=['deleted_at'];
 }
