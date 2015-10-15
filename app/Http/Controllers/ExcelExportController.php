@@ -41,8 +41,8 @@ class ExcelExportController extends Controller
                         )
                     ));
                     $employees_id=Employee::select('id')->where('department_name','MIS')->orWhere('department_name','IT')->get();
-                    $sum=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->sum('fee');
-                    $mobilefees=\App\MobileFees::wherein('employee_id',$employees_id)->where('months',$months)->with('company','employee')->get();
+                    $sum=\App\MobileFees::where('company_id',6)->wherein('employee_id',$employees_id)->where('months',$months)->with('company','employee')->sum('fee');
+                    $mobilefees=\App\MobileFees::where('company_id',6)->wherein('employee_id',$employees_id)->where('months',$months)->with('company','employee')->get();
                     $sheet->loadView('report.mis')
                         ->with('mobilefees',$mobilefees)
 
