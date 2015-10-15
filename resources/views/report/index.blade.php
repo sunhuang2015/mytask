@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{!! $company_name !!}</title>
+    <title>@if($company_name=='CROP')
+
+            Corporate
+        @else
+            {!! $company_name !!}
+        @endif</title>
 
 </head>
 <body>
@@ -50,7 +55,7 @@
             </tr>
             <tr>
 
-                <th width="8">序号</th>
+                <th width="6">序号</th>
                 <th width="8">部门</th>
                 <th width="8">姓名</th>
                 <th width="10" align="left">工号</th>
