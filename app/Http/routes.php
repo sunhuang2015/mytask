@@ -65,7 +65,9 @@ Route::group(['middleware' => 'auth'], function () {
     route::resource('taskforms','TaskFormController');
     route::get('/reporting/task/excel/{id}',"ReportController@taskexcel");
     Route::resource('bills','BillListController');
-
+    Route::get('report/{months}','ExcelExportController@months');
+    Route::get('reports/{months}/MIS','ExcelExportController@mis');
+/*
     Route::get('report/{months}',function($months) {
 
 
@@ -107,7 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         })->download('xls');
     });
-
+*/
     Route::resource('racks','RackController');
     Route::resource('networkmodels','NetworkModelController');
     Route::resource('networkdevices','NetworkDeviceController');
