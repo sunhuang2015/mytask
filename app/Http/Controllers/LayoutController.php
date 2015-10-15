@@ -26,7 +26,7 @@ class LayoutController extends Controller
                 $company_id=$request->session()->get('layout_company_id');
             }else
             {
-                $company_id=1;
+                $company_id=2;
             }
         }
         $racks=Rack::with(['company','networkDevice'])->where('company_id',$company_id)->get();

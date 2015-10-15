@@ -66,10 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('/reporting/task/excel/{id}',"ReportController@taskexcel");
     Route::resource('bills','BillListController');
 
-    Route::get('report/{months}',function($months){
+    Route::get('report/{months}',function($months) {
 
 
-        Excel::create('MultekMobile', function($excel) use($months) {
+        Excel::create('通讯报销汇总_'.$months, function($excel) use($months) {
 
             $companies=Company::all();
 
@@ -80,9 +80,25 @@ Route::group(['middleware' => 'auth'], function () {
 
                     // Set border for cells
                     $sheet->setBorder('A1', 'thin');
+                    // Font family
+                    $sheet->setFontFamily('Comic Sans MS');
 
+// Set font with ->setStyle()`
+                    $sheet->setStyle(array(
+                        'font' => array(
+                            'name'      =>  'Calibri',
+                            'size'      =>  11,
+                            'bold'      =>  false
+                        )
+                    ));
+
+                    $sum=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->sum('fee');
                     $mobilefees=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->get();
-                    $sheet->loadView('report.index')->with('mobilefees',$mobilefees)->with('company_name',$company->name);
+                    $sheet->loadView('report.index')
+                        ->with('mobilefees',$mobilefees)
+
+                        ->with('sum',$sum)
+                        ->with('company_name',$company->name);
 
                 });
             }

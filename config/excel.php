@@ -58,15 +58,15 @@ return array(
     ),
 
     'properties' => array(
-        'creator'        => 'Maatwebsite',
-        'lastModifiedBy' => 'Maatwebsite',
+        'creator'        => 'sun huang',
+        'lastModifiedBy' => 'sun huang',
         'title'          => 'Spreadsheet',
         'description'    => 'Default spreadsheet export',
         'subject'        => 'Spreadsheet export',
-        'keywords'       => 'maatwebsite, excel, export',
+        'keywords'       => 'Mobile Fee, excel, export',
         'category'       => 'Excel',
-        'manager'        => 'Maatwebsite',
-        'company'        => 'Maatwebsite',
+        'manager'        => 'sun huang',
+        'company'        => 'Multek',
     ),
 
     /*
@@ -106,7 +106,7 @@ return array(
     |
     */
 
-    'creator'    => 'Maatwebsite',
+    'creator'    => 'Sun huang',
 
     'csv'        => array(
         /*
@@ -148,7 +148,7 @@ return array(
         | an array of columns ( array('A', 'B') )
         |
         */
-        'autosize'                    => true,
+        'autosize'                    => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -538,8 +538,8 @@ return array(
             */
             'th'     => array(
                 'font' => array(
-                    'bold' => true,
-                    'size' => 12,
+                    'bold' => false,
+                    'size' => 11,
                 )
             ),
 

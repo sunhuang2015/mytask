@@ -2,13 +2,13 @@
 @section('content')
     <div class="page-header">
         <h1>
-            Step
+
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
                网络机柜
                         {!! Form::open(['url'=>'layouts']) !!}
                         {!! Form::select('company_id',\App\Company::lists('name','id')) !!}
-                       {!! Form::submit() !!}
+                       {!! Form::submit('选择机柜',['class'=>'btn btn-purple btn-xs']) !!}
                         {!! Form::close() !!}
             </small>
         </h1>
