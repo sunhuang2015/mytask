@@ -24,7 +24,7 @@
             @foreach($months as $month)
                 <a href="/report/{!! $month->months !!}">{!! $month->months !!}</a>
             @endforeach
-            <a href="/reports/{!! $month->months !!}/MIS">MIS</a>
+            <a href="/reports/{!! session('months') !!}/MIS">MIS</a>
             <table class="display table table-striped table-bordered compact " cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>
