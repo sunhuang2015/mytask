@@ -27,6 +27,7 @@
 
                         <br>
                         <span class="badge {{ $tasklog->step->icon }}"> {{ $tasklog->step->name }} </span>
+                        <span>{!! $tasklog->remark !!}</span>
 
                         <a href="/download/tasklog/{{$tasklog->id}}"><i class="ace-icon fa fa-envelope" ></i></a>
                     </div>
