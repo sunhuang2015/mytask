@@ -2,10 +2,10 @@
 @section('content')
     <div class="page-header">
         <h1>
-            Step
+            {!! session('months') !!}
             <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                Static &amp; Dynamic Tables
+             报销
             </small>
         </h1>
     </div>
@@ -24,7 +24,7 @@
             @foreach($months as $month)
                 <a href="/report/{!! $month->months !!}">{!! $month->months !!}</a>
             @endforeach
-            <a href="/reports/{!! session('months') !!}/MIS">MIS</a>
+            <a href="/reports/{!! session('months') !!}/MIS" class="btn btn-xs purple">{!! session('months') !!}_MIS_报销表</a>
             <table class="display table table-striped table-bordered compact " cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>
