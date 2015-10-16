@@ -79,7 +79,7 @@
                         <li class="">
                             <a href="/employees">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                员工
+                                报销人员
                             </a>
 
                             <b class="arrow"></b>
@@ -87,7 +87,7 @@
                         <li class="">
                             <a href="/cdmas">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                CDMA
+                                CDMA管理
                             </a>
 
                             <b class="arrow"></b>

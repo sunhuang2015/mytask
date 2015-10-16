@@ -138,7 +138,7 @@
                                 <td>{!! $bill->company->name !!}</td>
                                 <td>{!! $bill->months !!}</td>
                                 <td>{!! $bill->fee !!}</td>
-                                <td><a href="/cdmas/modify/{!! $bill->id !!}"><i class="ace-icon fa fa-edit ">添加</i></a></td>
+                                <td><a href="/bills/{!! $bill->phone !!}"><i class="ace-icon fa fa-edit ">检查号码</i></a></td>
                             </tr>
                         @endforeach
                 </tbody>

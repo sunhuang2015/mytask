@@ -40,8 +40,9 @@ class PhoneController extends Controller
     {
         //
         $data=$request->except('_token');
-        Phone::create($data);
-        return redirect('phones');
+       dd($data);
+       //Phone::create($data);
+       // return redirect('phones');
     }
 
     /**

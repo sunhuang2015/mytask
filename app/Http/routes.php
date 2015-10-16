@@ -67,49 +67,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('bills','BillListController');
     Route::get('report/{months}','ExcelExportController@months');
     Route::get('reports/{months}/MIS','ExcelExportController@mis');
-/*
-    Route::get('report/{months}',function($months) {
-
-
-        Excel::create('通讯报销汇总_'.$months, function($excel) use($months) {
-
-            $companies=Company::all();
-
-            foreach($companies as $company){
-
-                $excel->sheet('new Sheet', function($sheet) use($company,$months){
-                    $sheet->setAllBorders('thin');
-
-                    // Set border for cells
-                    $sheet->setBorder('A1', 'thin');
-                    // Font family
-                    $sheet->setFontFamily('Comic Sans MS');
-
-// Set font with ->setStyle()`
-                    $sheet->setStyle(array(
-                        'font' => array(
-                            'name'      =>  'Calibri',
-                            'size'      =>  11,
-                            'bold'      =>  false
-                        )
-                    ));
-
-                    $sum=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->sum('fee');
-                    $mobilefees=\App\MobileFees::where('company_id',$company->id)->where('months',$months)->with('company','employee')->get();
-                    $sheet->loadView('report.index')
-                        ->with('mobilefees',$mobilefees)
-
-                        ->with('sum',$sum)
-                        ->with('company_name',$company->name);
-
-                });
-            }
-
-
-
-        })->download('xls');
-    });
-*/
     Route::resource('racks','RackController');
     Route::resource('networkmodels','NetworkModelController');
     Route::resource('networkdevices','NetworkDeviceController');

@@ -30,13 +30,15 @@
                 <tr>
 
 
-                    <th>工号</th>
-                    <th>姓名</th>
-                    <th>公司</th>
-                    <th>成本中心</th>
-                    <th>月份</th>
-                    <th>费用</th>
-                    <th></th>
+                    <th width="10">工号</th>
+                    <th width="15">姓名</th>
+                    <th width="8">公司</th>
+                    <th width="20"> 部门</th>
+                    <th width="10">成本中心</th>
+                    <th width="30">月份</th>
+                    <th width="80">费用</th>
+                    <th width="20">?更新</th>
+
 
                 </tr>
 
@@ -50,14 +52,18 @@
                             <td>{!! $mobilefee->employee->department_name !!}</td>
                             <td>{!! $mobilefee->employee->costcenter !!}</td>
                             <td>{!! $mobilefee->months !!}</td>
-                            <td>
+
+                            <td >
                                 {!! Form::model($mobilefee,[
                                     'route'=>['mobilefees.update',$mobilefee->id],
-                                    'method'=>'put'
+                                    'method'=>'put',
+                                    'class'=>'form-inline'
                                     ]
                                     ) !!}
-                                {!! Form::text('fee',$mobilefee->fee,['class'=>'form-control input-sm','precision'=>"2"]) !!}
-                                {!! Form::submit() !!}
+                                <div class="form-group">
+                                    {!! Form::text('fee',$mobilefee->fee,['class'=>'form-control input-sm col-xs-1','precision'=>"2"]) !!}
+                                    {!! Form::submit('修改',['class'=>"btn btn-xs"]) !!}
+                                </div>
                                 {!! Form::close() !!}
                                 @if (session()->has('message'))
                                     <div class="alert alert-warning alert-dismissible" role="alert">
@@ -70,6 +76,10 @@
                                     </div>
                                 @endif
                             </td>
+                            <td>{!! Carbon\Carbon::now()->diffInDays($mobilefee->updated_at) !!}小时
+                                {!! Carbon\Carbon::now()->diffInDays($mobilefee->updated_at) !!}天</td>
+
+
 
 
 
