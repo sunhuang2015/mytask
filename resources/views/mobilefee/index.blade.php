@@ -76,7 +76,7 @@
                                     </div>
                                 @endif
                             </td>
-                            <td>{!! Carbon\Carbon::now()->diffInDays($mobilefee->updated_at) !!}小时
+                            <td>{!! Carbon\Carbon::now()->diffInHours($mobilefee->updated_at) !!}小时
                                 {!! Carbon\Carbon::now()->diffInDays($mobilefee->updated_at) !!}天</td>
 
 
