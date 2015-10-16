@@ -159,20 +159,21 @@
             <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="tbl_tasks">
                 <thead>
                 <tr>
-                    <th class="hidden-320">项目名称</th>
+                    <td width="5">ID</td>
+                    <th class="hidden-320">名称</th>
 
                     <th>申请人</th>
                     
-		             <th>Phone</phone>
-                    <th>Subject</th>
+		             <th>电话</phone>
+                    <th>标题</th>
 
                     <th>公司</th>
-                    <th>成本中心</th>
+                    <th>成本</th>
 
-                    <th>Status</td>
+                    <th>状态</td>
 		            <th>细节</th>
-                    <th>采购清单</th>
-                    <th>创立</th>
+                    <th>清单</th>
+
                     <th>更新</th>
                 </tr>
 
@@ -180,6 +181,7 @@
                 <tbody>
                     @foreach($tasks as $task)
                         <tr>
+                            <td>{!! $task->id !!}</td>
                             <td>{{ $task->name  }}</td>
                             <td>{{ $task->applicant }}</td>
                             <td>{!! str_limit($task->phone,11) !!}</td>
@@ -190,10 +192,8 @@
                             	 <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa  fa-2x fa-refresh "></i></a></td>
 			                 <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile fa-2x"></i></a></td>
                             <td><a href="/taskforms/{!! $task->id !!}"><i class="ace-icon fa fa-pencil"></i></a></td>
-                            <td>{!!
 
-                            $task->created_at !!}</td>
-                            <td>{!! $task->updated_at !!}</td>
+                            <td>{!! $task->updated_at->format('Y/d/m') !!}</td>
                         </tr>
                     @endforeach
                 </tbody>

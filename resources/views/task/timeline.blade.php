@@ -23,13 +23,14 @@
                         <span class="bigger-110">
 							<a href="#" class="purple bolder">{</a>
 							{!! $tasklog->task->subject !!}
-						</span>
+                        </span>
 
                         <br>
                         <span class="badge {{ $tasklog->step->icon }}"> {{ $tasklog->step->name }} </span>
-                        <span>{!! $tasklog->remark !!}</span>
-
+                        <span>备注（SC）  -{!! $tasklog->remark !!}</span>
+                        <span>附件
                         <a href="/download/tasklog/{{$tasklog->id}}"><i class="ace-icon fa fa-envelope" ></i></a>
+                            </span>
                     </div>
                 </div>
             </div>
