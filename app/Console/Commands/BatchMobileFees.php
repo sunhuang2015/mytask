@@ -50,7 +50,8 @@ class BatchMobileFees extends Command
         foreach($employees as $employee){
                 $data['employee_id']=$employee->id;
                 $data['company_id']=$employee->company_id;
-            $data['months']= Carbon::now()->firstOfMonth();
+                $data['months']= '2015-07-01';
+                //$data['months']= Carbon::now()->firstOfMonth();
 
                 $data['fee']=0;
 
