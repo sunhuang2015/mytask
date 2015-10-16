@@ -91,7 +91,19 @@
 		   <td align="left">{!! $mobilefee->employee->phone_number !!}</td>
 
                     <td align="left">{!! $mobilefee->months !!}</td>
-                    <td align="left">{!! \App\Employee::find($mobilefee->employee_id)->level->credit !!}</td>
+                    <td align="left"><?php
+
+                        $credit=\App\Employee::find($mobilefee->employee_id)->level->credit;
+
+
+                        ?>
+                        @if($credit==1500)
+                            实报实销
+                        @else
+                            {!! $credit !!}
+                        @endif
+
+                    </td>
                     <td align="left">
 
                         {!! $mobilefee->fee!!}
