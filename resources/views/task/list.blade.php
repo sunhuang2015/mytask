@@ -182,15 +182,17 @@
                         <tr>
                             <td>{{ $task->name  }}</td>
                             <td>{{ $task->applicant }}</td>
-                            <td>{!! $task->phone !!}</td> 
-                            <td>{!! $task->subject !!}</td>
-			    <td>{{ $task->company->name }}</td>
+                            <td>{!! str_limit($task->phone,11) !!}</td>
+                            <td>{!! str_limit($task->subject,40) !!}</td>
+			                <td>{{ $task->company->name }}</td>
                             <td>{{ $task->costcenter }}</td>
 
-                      	 <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa fa-edit "></i></a></td>
-			      <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile"></i></a></td>
+                            	 <td><span class="badge {{ $task->step->icon }}"> {{ $task->step->name }} </span><a href="/tasklogs/{{$task->id}}/edit"><i class="ace-icon fa  fa-2x fa-refresh "></i></a></td>
+			                 <td><a href="/tasklogs/timelime/{{$task->id}}"><i class="ace-icon fa fa-mobile fa-2x"></i></a></td>
                             <td><a href="/taskforms/{!! $task->id !!}"><i class="ace-icon fa fa-pencil"></i></a></td>
-                            <td>{!! $task->created_at !!}</td>
+                            <td>{!!
+
+                            $task->created_at !!}</td>
                             <td>{!! $task->updated_at !!}</td>
                         </tr>
                     @endforeach
