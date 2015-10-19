@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BillList;
 use App\EmployeeCategory;
+use App\PhoneCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -14,6 +15,7 @@ use App\Company;
 use App\Department;
 use App\Employee;
 use App\Cdma;
+use App\Phone;
 
 class UploadController extends Controller
 {
@@ -359,5 +361,74 @@ class UploadController extends Controller
     }
 
 
+public function phoneUpload(Request $request){
+    if($request->hasFile('phonefile')){
+
+        $date=Carbon::now()->format("Y_m_d");
+        $path=base_path()."/up/"."Phone/".$date."/";
+        $ext=$request->file('phonefile')->getClientOriginalExtension();
+        $extmine=$request->file('phonefile')->getClientMimeType();
+        $exts=collect([
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        ]);
+        if($exts->contains($extmine)){
+            $request->file('phonefile')->move($path,Carbon::now()->timestamp.".".$ext);
+            $filename=$path.Carbon::now()->timestamp.".".$ext;
+
+            /* Import Excel file*/
+            Excel::load($filename,function($reader)  {
+
+                $rule=[
+                    'number'=>'required|unique:phones'
+                ];
+                $sheetsCount=$reader->getSheetCount();
+                for($i=0;$i<$sheetsCount;$i++){
+                    $sheets=$reader->getSheet($i)->toArray();
+                    $sheetCount=count($sheets);
+                    for($j=1;$j<$sheetCount;$j++){
+
+                        /*
+                         *  $table->integer('company_id')->unsigned();
+                            $table->boolean('isShared')->default(false);
+                            $table->string('department_name')->nullable();
+                            $table->boolean('isActived')->default(true);
+                            $table->string('number')->unique();
+                            $table->integer('payment_company_id')->unsigned();
+                            $table->integer('category_id')->unsigned();
+                         */
+
+                        if($sheets[$j][6]=='EXT'){
+                            $data['number']=trim($sheets[$j][1]);
+                            $data['company_id']=Company::where('name',trim($sheets[$j][3]))->value('id');
+                            $data['payment_company_id']= $data['company_id'];
+                            $data['category_id']=PhoneCategory::where('name','EXT')->value('id');
+                            $data['department_name']=$sheets[$j][4];
+                            $validator=\Validator::make($data,$rule);
+                            if($validator->fails()){
+
+                            }else{
+                                Phone::create($data);
+                            }
+                        }
+                       /* $validator=\Validator::make($data,$rule);
+                        if($validator->fails()){
+
+                        }else{
+
+                        }*/
+                    }
+
+                }
+            });
+
+
+        }else{
+            return back()->with('message','文件格式不对');
+        }
+
+    }
+    return back();
+}
 
 }

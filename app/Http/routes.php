@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload/employee/','UploadController@employeeUpload');
     Route::post('upload/cdma','UploadController@cdmaUpload');
     Route::get('upload/phone/','UploadController@phone');
+    Route::post('upload/phone','UploadController@phoneUpload');
     Route::post('upload/bill','UploadController@billUpload');
     Route::resource('employees','EmployeeController');
     Route::resource('phones','PhoneController');

@@ -16,9 +16,45 @@
             <button type="button" class="btn  btn-purple btn-xs  " data-toggle="modal" data-target="#myModal">
                 <i class="ace-icon fa fa-plus "></i> 新电话
             </button>
+            <button type="button" class="btn  btn-purple btn-xs  " data-toggle="modal" data-target="#uploadModel">
+                <i class="ace-icon fa fa-plus "></i> 上传
+            </button>
 
 
+            <div class="modal fade" id="uploadModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">上传</h4>
+                        </div>
+                        {!! Form::open(
+                                   array(
+                                   'url'=>'upload/phone',
+                                   'class'=>'form form-horizontal',
+                                   'files'=>true)
+                           ) !!}
+                        <div class="modal-body">
 
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <div class="form-group has-info">
+                                        <label for="" class="col-xs-2 control-label  ">CDMA文件</label>
+                                        <div class="col-xs-10">
+                                            {!! Form::file('phonefile') !!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">存盘</button>
+                        </div>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Modal -->
