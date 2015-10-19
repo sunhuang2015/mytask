@@ -398,11 +398,11 @@ public function phoneUpload(Request $request){
                             $table->integer('category_id')->unsigned();
                          */
 
-                        if($sheets[$j][6]=='EXT'){
+                        if($sheets[$j][6]=='EXT_CDMA'){
                             $data['number']=trim($sheets[$j][1]);
                             $data['company_id']=Company::where('name',trim($sheets[$j][3]))->value('id');
                             $data['payment_company_id']= $data['company_id'];
-                            $data['category_id']=PhoneCategory::where('name','EXT')->value('id');
+                            $data['category_id']=PhoneCategory::where('name','CDMA')->value('id');
                             $data['department_name']=$sheets[$j][4];
                             $validator=\Validator::make($data,$rule);
                             if($validator->fails()){
